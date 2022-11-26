@@ -1,0 +1,229 @@
+{{#extends "base"}}
+  {{#block "title"}}Caregiver Survey{{/block}}
+  {{#block "content"}}
+    <h1 class="mb-4">Questionnaire</h1>
+    <form method="post">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+      <section class="mb-4">
+        <div class="row mb-3">
+          <div class="col-md-6 col-sm-12">
+            <label for="msw_name" class="form-label">MSW Name</label>
+            <input
+              type="text"
+              class="form-control mb-3"
+              id="msw_name"
+              name="msw_name"
+              required
+            />
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="date" class="form-label">Survey Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              name="date"
+              required
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h5 class="text-secondary">Caregiver Details</h5>
+
+        <div class="row mb-3">
+          <div class="col-md-6 col-sm-12">
+            <label for="age" class="form-label">Age</label>
+            <select class="form-select mb-3" id="age" name="age" required>
+              <option selected hidden disabled value>Select an age group</option>
+              <option>Below 21</option>
+              <option>21-30</option>
+              <option>31-40</option>
+              <option>41-50</option>
+              <option>51-60</option>
+              <option>61-70</option>
+              <option>Above 71</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" name="gender" required>
+              <option selected hidden disabled value>Select a gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6 col-sm-12">
+            <label for="age" class="form-label">Race</label>
+            <select class="form-select mb-3" id="race" name="race" required>
+              <option selected hidden disabled value>Select a race</option>
+              <option>Chinese</option>
+              <option>Malay</option>
+              <option>Indian</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="marital_status" class="form-label">Marital Status</label>
+            <select
+              class="form-select"
+              id="marital_status"
+              name="marital_status"
+              required
+            >
+              <option selected hidden disabled value>Select a marital status</option>
+              <option>Married</option>
+              <option>Divorced</option>
+              <option>Widowed</option>
+              <option>Single</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6 col-sm-12">
+            <label for="education_level" class="form-label">Highest Education
+              Level</label>
+            <select
+              class="form-select mb-3"
+              id="education_level"
+              name="education_level"
+              required
+            >
+              <option selected hidden disabled value>Select an education level</option>
+              <option>Primary</option>
+              <option>Secondary</option>
+              <option>ITE</option>
+              <option>Diploma</option>
+              <option>Degree and above</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="employment_status" class="form-label">Employment Status</label>
+            <select
+              class="form-select"
+              id="employment_status"
+              name="employment_status"
+              required
+            >
+              <option selected hidden disabled value>Select an employment status</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Not working</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6 col-sm-12">
+            <label for="main_caregiver" class="form-label">Are you the main
+              caregiver?</label>
+            <select
+              class="form-select mb-3"
+              id="main_caregiver"
+              name="main_caregiver"
+              required
+            >
+              <option selected hidden disabled value>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="caregiving_length" class="form-label">Length of
+              Caregiving</label>
+            <select
+              class="form-select"
+              id="caregiving_length"
+              name="caregiving_length"
+            >
+              <option selected hidden disabled value>Select an option </option>
+              <option>Less than 1 year</option>
+              <option>1-3 years</option>
+              <option>4-6 years</option>
+              <option>7-10 years</option>
+              <option>11-20 years</option>
+              <option>More than 21 years</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h4 class="text-secondary mt-5">Modified Caregiver Reaction Assessment (m-CRA)</h4>
+        <h6 class="text-secondary mb-3">Please indicate how much you agree with the following statements</h6>
+        {{#each questions}}
+          <div class="mb-4">
+            <p>{{this.qn}}</p>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="0"
+                value="0"
+                required
+              />
+              <label class="form-check-label" for="0">Strongly Disagree</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="1"
+                value="1"
+              />
+              <label class="form-check-label" for="1">Disgree</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="2"
+                value="2"
+              />
+              <label class="form-check-label" for="2">Neither Agree nor Disagree</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="3"
+                value="3"
+              />
+              <label class="form-check-label" for="3">Agree</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="4"
+                value="4"
+              />
+              <label class="form-check-label" for="4">Strong Agree</label>
+            </div>
+          </div>
+        {{/each}}
+
+        <button type="reset" class="btn btn-danger">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </section>
+    </form>
+
+		<p>CITATIONS:<p>
+		<p>Malhotra R, Chan A, Malhotra C, Østbye T. Validity and reliability of the Caregiver Reaction Assessment scale among primary informal caregivers for older persons in Singapore. Aging & Mental Health. 2012; 16(8): 1004-15.</p>
+		<p>
+		Given CW, Given B, Stommel M, Collins C, King S, Franklin S. The caregiver reaction assessment (CRA) for caregivers to persons with chronic physical and mental impairments. Research in Nursing & Health. 1992; 15: 271–283.
+		</p>
+  {{/block}}
+{{/extends}}

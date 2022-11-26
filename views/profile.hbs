@@ -1,0 +1,120 @@
+{{#extends "base"}}
+  {{#block "title"}}Your Profile{{/block}}
+  {{#block "content"}}
+    <h1 class="mb-4">Your Profile</h1>
+
+    <div class="bg-secondary p-3 rounded text-white mb-5">
+      <div class="row">
+        <div class="col text-center">
+          <p>Your MSW:<br />
+            <i class="fa-solid fa-person"></i>
+            <span class="fs-5">{{result.msw_name}}</span></p>
+        </div>
+        <div class="col text-center">
+          <p class="mb-0">Survey Date:<br />
+            <i class="fa-solid fa-calendar-day"></i>
+            <span class="fs-5">{{result.date}}</span></p>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col text-center">
+          <p>Disturbed Schedule / Poor Health (24)<br />
+            <span id="surveyScore" class="fs-4 p-1 rounded">
+              {{result.scoreDescription.poorHealth}}</span></p>
+        </div>
+        <div class="col text-center">
+          <p>Lack of Financesi (6)<br />
+            <span id="scoreDescription" class="fs-4 p-1 rounded">
+              {{result.scoreDescription.finances}}</span></p>
+        </div>
+        <div class="col text-center">
+          <p>Lack of Family Support (15)<br />
+            <span id="scoreDescription" class="fs-4 p-1 rounded">
+              {{result.scoreDescription.familySupport}}</span></p>
+        </div>
+        <div class="col text-center">
+          <p>Caregiver Esteem (18)<br />
+            <span id="scoreDescription" class="fs-4 p-1 rounded">
+              {{result.scoreDescription.esteem}}</span></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mb-4">Details</h3>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Age</td>
+          <td class="text-end">{{result.age}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td class="text-end">{{result.gender}}</td>
+        </tr>
+        <tr>
+          <td>Race</td>
+          <td class="text-end">{{result.race}}</td>
+        </tr>
+        <tr>
+          <td>Marital Status</td>
+          <td class="text-end">{{result.marital_status}}</td>
+        </tr>
+        <tr>
+          <td>Highest Education Level</td>
+          <td class="text-end">{{result.education_level}}</td>
+        </tr>
+        <tr>
+          <td>Employment Status</td>
+          <td class="text-end">{{result.employment_status}}</td>
+        </tr>
+        <tr>
+          <td>Main Caregiver?</td>
+          <td class="text-end">{{result.main_caregiver}}</td>
+        </tr>
+        <tr>
+          <td>Caregiving Length</td>
+          <td class="text-end">{{result.caregiving_length}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="mt-5 mb-4">m-CRA 21 Scores</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+					{{#each questions}}
+				<tr>
+					<td>{{this.qn}}</td>
+					<td>
+						{{#if_eq this.result "1"}}Strongly Disagre{{/if_eq}}
+						{{#if_eq this.result "2"}}Disagre{{/if_eq}}
+						{{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
+						{{#if_eq this.result "4"}}Agree{{/if_eq}}
+						{{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
+					</td>
+				</tr>
+				{{/each}}
+      </tbody>
+    </table>
+
+    <button class="mt-3 mb-4 btn btn-success" id="printBtn"><i
+        class="fa-solid fa-print"
+      ></i>
+      Print</button>
+    <a class="mt-3 mb-4 btn btn-primary" href="/">Do another survey</a>
+  {{/block}}
+
+  {{#block "js"}}
+    <script>
+      document.getElementById("printBtn").addEventListener("click", ()=>{
+      window.print() });
+    </script>
+  {{/block}}
+{{/extends}}
