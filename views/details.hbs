@@ -1,8 +1,8 @@
 {{#extends "base"}}
-  {{#block "title"}}Zarit Details{{/block}}
+  {{#block "title"}}m-CRA 21 Scores{{/block}}
 
   {{#block "content"}}
-    <h1 class="mb-4">Details of Zarit Caregiver Burden Scale</h1>
+    <h1 class="mb-4">m-CRA 21 Scores</h1>
 
     <p class="mb-4 btn btn-secondary">ID: {{result._id}}</p>
 
@@ -14,18 +14,18 @@
         </tr>
       </thead>
       <tbody>
-					{{#each questions}}
-				<tr>
-					<td>{{this.qn}}</td>
-					<td>
-						{{#if_eq this.result "1"}}Strongly Disagre{{/if_eq}}
-						{{#if_eq this.result "2"}}Disagre{{/if_eq}}
-						{{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
-						{{#if_eq this.result "4"}}Agree{{/if_eq}}
-						{{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
-					</td>
-				</tr>
-				{{/each}}
+        {{#each questions}}
+          <tr>
+            <td>{{this.qn}}</td>
+            <td>
+              {{#if_eq this.result "0"}}Strongly Disagree{{/if_eq}}
+              {{#if_eq this.result "1"}}Disagree{{/if_eq}}
+              {{#if_eq this.result "2"}}Neither Agree nor Disagree{{/if_eq}}
+              {{#if_eq this.result "3"}}Agree{{/if_eq}}
+              {{#if_eq this.result "4"}}Strongly Agree{{/if_eq}}
+            </td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
 

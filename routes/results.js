@@ -19,6 +19,7 @@ router.get("/:id", async function (req, res) {
   res.status(200);
   res.render("profile", {
     questions: questions,
+    result: result,
   });
 });
 

@@ -17,6 +17,7 @@ router.get("/:id", async (req, res) => {
   }
 
   res.status(200);
+
   res.render("details", {
     questions: questions,
     result: result,
