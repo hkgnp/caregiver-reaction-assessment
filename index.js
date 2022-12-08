@@ -75,6 +75,6 @@ const detailsRoute = require("./routes/details");
   app.use("/details/", detailsRoute);
 })();
 
-app.listen(process.env.PORT || 7000, () =>
+app.listen(process.env.PORT || 9000, () =>
   console.log("Server is running! Woohoo!")
 );

@@ -44,6 +44,8 @@ router.post("/", async function (req, res) {
 
   postObj["scoreDescription"] = scoreDescription;
 
+  delete postObj._csrf;
+
   const result = await req.mongoClient.collection("results").insertOne(postObj);
   const id = result.insertedId;
 

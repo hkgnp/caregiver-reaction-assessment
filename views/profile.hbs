@@ -3,40 +3,65 @@
   {{#block "content"}}
     <h1 class="mb-4">Your Profile</h1>
 
-    <div class="bg-secondary p-3 rounded text-white mb-5">
-      <div class="row">
-        <div class="col text-center">
-          <p>Your MSW:<br />
-            <i class="fa-solid fa-person"></i>
-            <span class="fs-5">{{result.msw_name}}</span></p>
+    <div class="row g-4 py-5 row-cols-2 row-cols-md-2">
+      <div class="col d-flex align-items-center justify-content-center">
+        <div>
+          <h3 class="fs-2"><i class="fa-regular fa-user"></i> MSW</h3>
+          <p>{{result.msw_name}}</p>
         </div>
-        <div class="col text-center">
-          <p class="mb-0">Survey Date:<br />
-            <i class="fa-solid fa-calendar-day"></i>
-            <span class="fs-5">{{result.date}}</span></p>
+      </div>
+      <div class="col d-flex align-items-center justify-content-center">
+        <div>
+          <h3 class="fs-2"><i class="fa-regular fa-calendar"></i> Date</h3>
+          <p>{{result.date}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-lg-4 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Poor Health</h4>
+          </div>
+          <div class="card-body">
+            <h4
+              class="my-0 fw-normal"
+            >{{result.scoreDescription.poorHealth}}</h4>
+          </div>
         </div>
       </div>
 
-      <div class="row mt-4">
-        <div class="col text-center">
-          <p>Disturbed Schedule / Poor Health (24)<br />
-            <span id="surveyScore" class="fs-4 p-1 rounded">
-              {{result.scoreDescription.poorHealth}}</span></p>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Finances</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="my-0 fw-normal">{{result.scoreDescription.finances}}</h4>
+          </div>
         </div>
-        <div class="col text-center">
-          <p>Lack of Financesi (6)<br />
-            <span id="scoreDescription" class="fs-4 p-1 rounded">
-              {{result.scoreDescription.finances}}</span></p>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Family Support</h4>
+          </div>
+          <div class="card-body">
+            <h4
+              class="my-0 fw-normal"
+            >{{result.scoreDescription.familySupport}}</h4>
+          </div>
         </div>
-        <div class="col text-center">
-          <p>Lack of Family Support (15)<br />
-            <span id="scoreDescription" class="fs-4 p-1 rounded">
-              {{result.scoreDescription.familySupport}}</span></p>
-        </div>
-        <div class="col text-center">
-          <p>Caregiver Esteem (18)<br />
-            <span id="scoreDescription" class="fs-4 p-1 rounded">
-              {{result.scoreDescription.esteem}}</span></p>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Esteem</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="my-0 fw-normal">{{result.scoreDescription.esteem}}</h4>
+          </div>
         </div>
       </div>
     </div>
