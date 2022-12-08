@@ -23,6 +23,10 @@
           <th>Employment Status</th>
           <th>Main Caregiver?</th>
           <th>Caregiving Length</th>
+					<th>Poor Health</th>
+					<th>Lack of Finances</th>
+					<th>Lack of Support</th>
+					<th>Esteem
           <th>m-CRA details</th>
         </tr>
       </thead>
@@ -40,6 +44,10 @@
             <td>{{this.employment_status}}</td>
             <td>{{this.main_caregiver}}</td>
             <td>{{this.caregiving_length}}</td>
+						<td>{{this.scoreDescription.poorHealth}}</td>
+						<td>{{this.scoreDescription.finances}}</td>
+						<td>{{this.scoreDescription.familySupport}}</td>
+						<td>{{this.scoreDescription.esteem}}</td>
             <td><a
                 class="btn btn-primary btn-sm"
                 href="/details/{{this._id}}"
@@ -56,7 +64,7 @@
       function downloadTable(table_id, separator = ',') { var rows =
       document.querySelectorAll('table#' + table_id + ' tr'); var csv = []; for
       (var i = 0; i < rows.length; i++) { var row = [], cols =
-      rows[i].querySelectorAll('td, th'); for (var j = 0; j < cols.length; j++)
+      rows[i].querySelectorAll('td, th'); for (var j = 0; j < cols.length-1; j++)
       { var data =
       cols[j].innerText.replace(/(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\r\n|\n|\r)/gm,
       '').replace(/(\s\s)/gm, ' '); data = data.replace(/"/g, '""');

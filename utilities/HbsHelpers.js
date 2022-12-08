@@ -13,6 +13,8 @@ function use() {
       return args[0] === expression;
     });
   });
+
+  hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
 }
 
 module.exports = { use };

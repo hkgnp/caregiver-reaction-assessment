@@ -25,22 +25,29 @@ router.post("/", async function (req, res) {
   //Lack of family support: 		Items 2, 8, 10, 12 and 15. (Note that Item 2 has to be reverse scored, to align it with the rest of the items in this subscale/domain)
   //Caregiver esteem: 			Items 3, 5, 9, 11, 17 and 19.
   scoreDescription["poorHealth"] =
-    numArr[1] +
-    numArr[4] +
-    numArr[6] +
-    numArr[7] +
-    numArr[13] +
-    numArr[14] +
-    numArr[16] +
-    numArr[18];
+    (numArr[1] +
+      numArr[4] +
+      numArr[6] +
+      numArr[7] +
+      numArr[13] +
+      numArr[14] +
+      numArr[16] +
+      numArr[18]) /
+    8;
 
-  scoreDescription["finances"] = numArr[20] + numArr[21];
+  scoreDescription["finances"] = (numArr[20] + numArr[21]) / 2;
 
   scoreDescription["familySupport"] =
-    Math.abs(numArr[2] - 6) + numArr[8] + numArr[10] + numArr[12] + numArr[15];
+    (Math.abs(numArr[2] - 6) +
+      numArr[8] +
+      numArr[10] +
+      numArr[12] +
+      numArr[15]) /
+    5;
 
   scoreDescription["esteem"] =
-    numArr[3] + numArr[5] + numArr[9] + numArr[11] + numArr[17] + numArr[19];
+    (numArr[3] + numArr[5] + numArr[9] + numArr[11] + numArr[17] + numArr[19]) /
+    6;
 
   postObj["scoreDescription"] = scoreDescription;
 

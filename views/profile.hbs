@@ -1,7 +1,7 @@
 {{#extends "base"}}
   {{#block "title"}}Your Profile{{/block}}
   {{#block "content"}}
-    <h1 class="mb-4">Your Profile</h1>
+    <h1 class="mb-0">Your Profile</h1>
 
     <div class="row g-4 py-5 row-cols-2 row-cols-md-2">
       <div class="col d-flex align-items-center justify-content-center">
@@ -12,8 +12,9 @@
       </div>
       <div class="col d-flex align-items-center justify-content-center">
         <div>
-          <h3 class="fs-2"><i class="fa-regular fa-calendar"></i> Date</h3>
-          <p>{{result.date}}</p>
+          <h3 class="fs-2"><i class="fa-regular fa-calendar"></i>
+            Survey Date</h3>
+          <p id="date">{{dateFormat result.date "Do MMM YYYY"}}</p>
         </div>
       </div>
     </div>
@@ -21,8 +22,8 @@
     <div class="row row-cols-1 row-cols-lg-4 mb-3 text-center">
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Poor Health</h4>
+          <div style="height:7em" class="card-header pt-3">
+            <h4 class="my-0 fw-normal">Disturbed Schedule & Poor Health</h4>
           </div>
           <div class="card-body">
             <h4
@@ -34,8 +35,8 @@
 
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Finances</h4>
+          <div style="height:7em" class="card-header pt-3">
+            <h4 class="my-0 fw-normal">Lack of Finances</h4>
           </div>
           <div class="card-body">
             <h4 class="my-0 fw-normal">{{result.scoreDescription.finances}}</h4>
@@ -44,8 +45,8 @@
       </div>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Family Support</h4>
+          <div style="height:7em" class="card-header pt-3">
+            <h4 class="my-0 fw-normal">Lack of Family Support</h4>
           </div>
           <div class="card-body">
             <h4
@@ -56,7 +57,7 @@
       </div>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
+          <div style="height:7em" class="card-header pt-3">
             <h4 class="my-0 fw-normal">Esteem</h4>
           </div>
           <div class="card-body">
@@ -104,25 +105,95 @@
         </tr>
       </tbody>
     </table>
+
     <h3 class="mt-5 mb-4">m-CRA 21 Scores</h3>
 
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Question</th>
-          <th scope="col">Score</th>
+          <th style="width:70%" scope="col">Poor Health</th>
+          <th style="width:30%" scope="col" class="text-end">Score</th>
         </tr>
       </thead>
       <tbody>
-        {{#each questions}}
+        {{#each sectionObj.poorHealthArr}}
           <tr>
-            <td>{{this.qn}}</td>
-            <td>
-              {{#if_eq this.result "0"}}Strongly Disagree{{/if_eq}}
-              {{#if_eq this.result "1"}}Disagree{{/if_eq}}
-              {{#if_eq this.result "2"}}Neither Agree nor Disagree{{/if_eq}}
-              {{#if_eq this.result "3"}}Agree{{/if_eq}}
-              {{#if_eq this.result "4"}}Strongly Agree{{/if_eq}}
+            <td>{{this.question}}</td>
+            <td class="text-end">
+              {{#if_eq this.result "1"}}Strongly Disagree{{/if_eq}}
+              {{#if_eq this.result "2"}}Disagree{{/if_eq}}
+              {{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
+              {{#if_eq this.result "4"}}Agree{{/if_eq}}
+              {{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:70%" scope="col">Finances</th>
+          <th style="width:30%" scope="col" class="text-end">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each sectionObj.financesArr}}
+          <tr>
+            <td>{{this.question}}</td>
+            <td class="text-end">
+              {{#if_eq this.result "1"}}Strongly Disagree{{/if_eq}}
+              {{#if_eq this.result "2"}}Disagree{{/if_eq}}
+              {{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
+              {{#if_eq this.result "4"}}Agree{{/if_eq}}
+              {{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:70%" scope="col">Lack of Family Support</th>
+          <th style="width:30%" scope="col" class="text-end">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each sectionObj.familySupportArr}}
+          <tr>
+            <td>{{this.question}}</td>
+            <td class="text-end">
+              {{#if_eq this.result "1"}}Strongly Disagree{{/if_eq}}
+              {{#if_eq this.result "2"}}Disagree{{/if_eq}}
+              {{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
+              {{#if_eq this.result "4"}}Agree{{/if_eq}}
+              {{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:70%" scope="col">Caregiver Esteem</th>
+          <th style="width:30%" scope="col" class="text-end">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each sectionObj.esteemArr}}
+          <tr>
+            <td>{{this.question}}</td>
+            <td class="text-end">
+              {{#if_eq this.result "1"}}Strongly Disagree{{/if_eq}}
+              {{#if_eq this.result "2"}}Disagree{{/if_eq}}
+              {{#if_eq this.result "3"}}Neither Agree nor Disagree{{/if_eq}}
+              {{#if_eq this.result "4"}}Agree{{/if_eq}}
+              {{#if_eq this.result "5"}}Strongly Agree{{/if_eq}}
             </td>
           </tr>
         {{/each}}
