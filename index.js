@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const helmet = require("helmet");
 const app = express();
 const cors = require("cors");
 const hbs = require("hbs");
@@ -11,6 +12,7 @@ const mongoUrl = process.env.MONGO_URL;
 const MongoUtil = require("./utilities/MongoUtil");
 const { useSessions } = require("./middleware");
 
+app.use(helmet());
 app.use(express.json());
 app.use(cors());
 
